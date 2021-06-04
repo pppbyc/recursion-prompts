@@ -78,6 +78,30 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  if(x === y || y - x === 1 || x - y === 1) {
+    return [];
+  }
+  if (x < y && x > 0){
+    if(y - x === 2) {
+      return [x+1];
+    } else {
+      var list = range(x, y-1);
+      list.push(y-1);
+      return list;
+    }
+  } else if (x > y && y > 0){
+    if (x - y === 2) {
+      return [y+1];
+    } else {
+      var list = range(x - 1, y);
+      list.push(x - 1);
+      return list;
+    }
+  } else {
+
+  }
+
+
 };
 
 // 7. Compute the exponent of a number.
@@ -86,6 +110,15 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+    if(exp === 0){
+        return 1;
+      } else if (exp > 0){
+      return base * exponent(base, exp - 1);
+    } else {
+      return 1 / exponent(base, -exp);
+    }
+
+
 };
 
 // 8. Determine if a number is a power of two.
